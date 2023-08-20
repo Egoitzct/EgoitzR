@@ -24,7 +24,7 @@ continuous_variable_analysis <- function(var1, media = TRUE, mediana = FALSE,
 
   if (moda) {
     x <- unique(var1)
-    moda <- uniqx[which.max(tabulate(match(var1, x)))]
+    moda <- x[which.max(tabulate(match(var1, x)))]
   }
 
   if (dt)
