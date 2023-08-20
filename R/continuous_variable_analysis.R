@@ -40,13 +40,11 @@ continuous_variable_analysis <- function(var1, media = TRUE, mediana = FALSE,
     RIC <- IQR(var1)
 
   if (simetria) {
-    m3 = mean((var1 - mean(var1)) ^3)
-    simetria = m3 / (dt ^3)
+    simetria <- moments::skewness(var1)
   }
 
   if (curtosis) {
-    m4 = mean((var1 - mean(var1)) ^4)
-    curtosis = m4 / (dt ^4) - 3
+    curtosis <- moments::kurtosis(var1)
   }
 
   if (grafico) {
