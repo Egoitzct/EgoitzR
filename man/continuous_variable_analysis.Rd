@@ -5,7 +5,6 @@
 \title{Continuous Variable Analysis}
 \usage{
 continuous_variable_analysis(
-  data,
   var1,
   media = TRUE,
   mediana = FALSE,
@@ -14,15 +13,13 @@ continuous_variable_analysis(
   varianza = TRUE,
   rango = FALSE,
   RIC = TRUE,
-  plot = TRUE,
+  grafico = TRUE,
   simetria = TRUE,
   curtosis = TRUE,
   ...
 )
 }
 \arguments{
-\item{data}{Base de datos donde se encuentra la variable que se quiere analizar}
-
 \item{var1}{La variable a analizar (numérica y continua)}
 
 \item{media}{Valor booleano, calcular o no la media}
@@ -39,7 +36,7 @@ continuous_variable_analysis(
 
 \item{RIC}{Valor booleano, calcular o no el rangointercuartil}
 
-\item{plot}{Valor booleano, dibujar o no un histograma}
+\item{grafico}{Valor booleano, dibujar o no un histograma}
 
 \item{simetria}{Valor booleano, calcular o no la simetria}
 

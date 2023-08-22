@@ -65,6 +65,6 @@ continuous_variable_analysis <- function(var1, media = TRUE, mediana = FALSE,
                            Simetría = c(simetria),
                            Curtosis = c(curtosis))
 
-  return(resultados)
+  resultados
 
 }
