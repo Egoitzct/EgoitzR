@@ -11,6 +11,8 @@
 #' @param grafico Valor booleano, dibujar o no un histograma
 #' @param simetria Valor booleano, calcular o no la simetria
 #' @param curtosis Valor booleano, calcular o no la curtosis
+#'
+#' @export
 
 continuous_variable_analysis <- function(var1, media = TRUE, mediana = FALSE,
                                          moda = FALSE, dt = TRUE, varianza = TRUE,

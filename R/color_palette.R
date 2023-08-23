@@ -3,6 +3,8 @@
 #' @description
 #' Some preconfigured color palettes, useful for plots
 #' @rdname color_palette
+#'
+#' @export
 
 egoitz_colors <- c(`light_blue`           = "#C3DFE0",
                    `pistachio`            = "#BCD979",

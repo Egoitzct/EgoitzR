@@ -1,6 +1,7 @@
 #' @title Análisis de variable nominal
 #' @importFrom epiDisplay tab1
 #'
+#' @export
 
 variable_nominal_analisis <- function(variable, frecuencia = TRUE, grafico = TRUE) {
   if (frecuencia) {
