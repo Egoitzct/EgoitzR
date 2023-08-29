@@ -17,12 +17,12 @@
 continuous_variable_analysis <- function(var1, media = TRUE, mediana = FALSE,
                                          moda = FALSE, dt = TRUE, varianza = TRUE,
                                          rango = FALSE, RIC = TRUE, grafico = TRUE,
-                                         simetria = TRUE, curtosis = TRUE, ...){
+                                         simetria = TRUE, curtosis = TRUE, na.rm = FALSE, ...){
   if (media)
-    media <- mean(var1)
+    media <- mean(var1, na.rm = na.rm)
 
   if (mediana)
-    mediana <- median(var1)
+    mediana <- median(var1, na.rm = na.rm)
 
   if (moda) {
     x <- unique(var1)
@@ -30,7 +30,7 @@ continuous_variable_analysis <- function(var1, media = TRUE, mediana = FALSE,
   }
 
   if (dt)
-    dt <- sd(var1)
+    dt <- sd(var1, na.rm = na.rm)
 
   if (varianza)
     varianza <- dt ^2
@@ -39,14 +39,14 @@ continuous_variable_analysis <- function(var1, media = TRUE, mediana = FALSE,
     rango <- max(var1) - min(var1)
 
   if (RIC)
-    RIC <- IQR(var1)
+    RIC <- IQR(var1, na.rm = na.rm)
 
   if (simetria) {
-    simetria <- moments::skewness(var1)
+    simetria <- moments::skewness(var1, na.rm = na.rm)
   }
 
   if (curtosis) {
-    curtosis <- moments::kurtosis(var1)
+    curtosis <- moments::kurtosis(var1, na.rm = na.rm)
   }
 
   if (grafico) {
