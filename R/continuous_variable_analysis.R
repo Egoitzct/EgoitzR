@@ -52,7 +52,7 @@ continuous_variable_analysis <- function(var1, media = TRUE, mediana = FALSE,
   if (grafico) {
     hist(var1, prob = TRUE, col = "white",
          border = "black")
-    lines(density(var1), col = egoitz_cols("madder"), lwd = 2)
+    lines(density(var1, na.rm = na.rm), col = egoitz_cols("madder"), lwd = 2)
   }
 
   resultados <- data.frame(stringsAsFactors = FALSE,
