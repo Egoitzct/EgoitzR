@@ -52,6 +52,9 @@ continuous_variable_analysis <- function(var1, media = TRUE, mediana = FALSE,
   if (max_min) {
     maximo <- max(var1)
     minimo <- min(var1)
+  } else {
+    maximo <- FALSE
+    minimo <- FALSE
   }
 
   if (grafico) {
