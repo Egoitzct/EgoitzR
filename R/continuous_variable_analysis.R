@@ -17,7 +17,7 @@
 continuous_variable_analysis <- function(var1, media = TRUE, mediana = FALSE,
                                          moda = FALSE, dt = TRUE, varianza = TRUE,
                                          rango = FALSE, RIC = TRUE, grafico = TRUE,
-                                         simetria = TRUE, curtosis = TRUE, na.rm = FALSE, ...){
+                                         simetria = TRUE, curtosis = TRUE, max_min = FALSE, na.rm = FALSE, ...){
   if (media)
     media <- mean(var1, na.rm = na.rm)
 
@@ -49,6 +49,11 @@ continuous_variable_analysis <- function(var1, media = TRUE, mediana = FALSE,
     curtosis <- moments::kurtosis(var1, na.rm = na.rm)
   }
 
+  if (max_min) {
+    maximo <- max(var1)
+    minimo <- min(var1)
+  }
+
   if (grafico) {
     hist(var1, prob = TRUE, col = "white",
          border = "black")
@@ -62,6 +67,8 @@ continuous_variable_analysis <- function(var1, media = TRUE, mediana = FALSE,
                            Moda = c(moda),
                            Desv_Tip = c(dt),
                            Varianza = c(varianza),
+                           Max = c(maximo),
+                           Min = c(minimo),
                            Rango = c(rango),
                            RIC = c(RIC),
                            Simetría = c(simetria),
