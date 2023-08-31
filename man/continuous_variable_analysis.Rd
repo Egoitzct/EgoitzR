@@ -16,6 +16,8 @@ continuous_variable_analysis(
   grafico = TRUE,
   simetria = TRUE,
   curtosis = TRUE,
+  max_min = FALSE,
+  na.rm = FALSE,
   ...
 )
 }
