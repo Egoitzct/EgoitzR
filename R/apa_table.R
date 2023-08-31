@@ -37,7 +37,7 @@ apa <- function(x, title = " ") {
     ) %>%
     #title setup
     tab_header(
-      title = html("<i>", title, "</i>")
+      title = title
     ) %>%
     opt_align_table_header(align = "left")
 }
