@@ -5,7 +5,7 @@
 \alias{egoitz_colors}
 \title{color_palette}
 \format{
-An object of class \code{character} of length 34.
+An object of class \code{character} of length 35.
 }
 \usage{
 egoitz_colors

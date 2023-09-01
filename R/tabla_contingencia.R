@@ -91,20 +91,20 @@ chi_cuadrado <- function(tabla, phi_coef = FALSE, coef_conting = TRUE,
   })
 }
 
-mosaico_tabla_contingencia <- function(tabla, title = " ") {
+mosaico_tabla_contingencia <- function(tabla, title = " ", egoitz_color = "gray_1") {
 
   layout(matrix(c(1), ncol = 1, nrow = 1))
   tabla_2 <- prop.table(tabla, margin = 2)
 
-  mosaicplot(tabla_2, cex = 1.1, color = egoitz_cols("yinmn_blue"),
+  mosaicplot(tabla, cex = 1.1, color = egoitz_cols(egoitz_color),
              main = title)
 }
 
-barras_tabla_contingencia <- function(tabla, title = " ") {
+barras_tabla_contingencia <- function(tabla, title = " ", egoitz_palette = "gray") {
 
   color_num <- length(unique(rownames(tabla)))
 
-  colors <- egoitz_color_pal("main")(color_num)
+  colors <- egoitz_color_pal(egoitz_palette)(color_num)
 
   tabla_2 <- prop.table(tabla, margin = 2)
 
