@@ -52,8 +52,8 @@ chi_cuadrado <- function(tabla, phi_coef = FALSE, coef_conting = TRUE,
 
   resultados <- data.frame(stringsAsFactors = FALSE,
                            Chi_Cuadrado = c(chi[["statistic"]][["X-squared"]]),
-                           p_value = c(chi$p.value),
-                           df = c(chi[["parameter"]][["df"]]),
+                           P = c(chi$p.value),
+                           GL = c(chi[["parameter"]][["df"]]),
                            Phi = c(phi),
                            V_Cramer = c(cramer),
                            Coef_Contingencia = c(contingencia))
