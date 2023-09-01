@@ -32,20 +32,26 @@ chi_cuadrado <- function(tabla, phi_coef = FALSE, coef_conting = TRUE,
 
   chi <- chisq.test(tabla)
 
+  chi_statistic <- chi[["statistic"]][["X-squared"]]
+  chi_statistic <- as.numeric(format(round(chi_statistic, 3), nsmall = 3))
+
   if (phi_coef) {
     phi <- phi_coef(tabla)
+    phi <- as.numeric(format(round(phi, 3), nsmall = 3))
   } else {
     phi <- "FALSE"
   }
 
   if (cramer_v) {
     cramer <- cramer_v(tabla)
+    cramer <- as.numeric(format(round(cramer, 3), nsmall = 3))
   } else {
     cramer <- "FALSE"
   }
 
   if (coef_conting) {
     contingencia <- coef_conting(tabla)
+    contingencia <- as.numeric(format(round(contingencia, 3), nsmall = 3))
   } else {
     contingencia <- "FALSE"
   }
@@ -53,13 +59,26 @@ chi_cuadrado <- function(tabla, phi_coef = FALSE, coef_conting = TRUE,
   if (likelihood_ratio) {
     observed <- as.numeric(as.vector(chi[["observed"]]))
     expected <- as.numeric(as.vector(chi[["expected"]]))
+    num_observations <- length(observed)
+
+    while (num_observations != 0) {
+      if (observed[num_observations] == 0){
+        observed <- observed[-num_observations]
+        expected <- expected[-num_observations]
+        num_observations <- num_observations - 1
+      } else {
+        num_observations <- num_observations - 1
+      }
+    }
+
     likelihood_ratio <- 2 * (sum(observed * (log(observed / expected))))
+    likelihood_ratio <- as.numeric(format(round(likelihood_ratio, 3), nsmall = 3))
   } else {
     likelihood_ratio <- "FALSE"
   }
 
   resultados <- data.frame(stringsAsFactors = FALSE,
-                           Chi_Cuadrado = c(chi[["statistic"]][["X-squared"]]),
+                           Chi_Cuadrado = c(chi_statistic),
                            Likelihood_Ratio = c(likelihood_ratio),
                            P = c(chi$p.value),
                            GL = c(chi[["parameter"]][["df"]]),
@@ -72,10 +91,13 @@ chi_cuadrado <- function(tabla, phi_coef = FALSE, coef_conting = TRUE,
   })
 }
 
-mosaico_tabla_contingencia <- function(tabla) {
+mosaico_tabla_contingencia <- function(tabla, title = " ") {
+
+  layout(matrix(c(1), ncol = 1, nrow = 1))
   tabla_2 <- prop.table(tabla, margin = 2)
 
   mosaicplot(tabla_2, cex = 1.1, color = egoitz_cols("yinmn_blue"))
+  title(main = " ")
 }
 
 barras_tabla_contingencia <- function(tabla) {
