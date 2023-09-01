@@ -36,7 +36,10 @@ egoitz_colors <- c(`light_blue`           = "#C3DFE0",
                    `celadon`              = "#BAD29F",
                    `cool_gray`            = "#808A9F",
                    `yinmn_blue`           = "#2C497F",
-                   `russian_violet`       = "#3D2B56")
+                   `russian_violet`       = "#3D2B56",
+                   `blue`                 = "#00aedb",
+                   `green`                = "#00b159",
+                   `yellow`               = "#ffc425")
 
 #' Function to extract egoitz_colors colors as hexadecimal codes
 #'
@@ -52,6 +55,7 @@ egoitz_cols <- function(...) {
 }
 
 egoitz_color_palettes <- list(
+  `main` = egoitz_cols("blue", "green", "yellow"),
   `blue_green_brown` = egoitz_cols("light_blue", "pistachio", "olivine",
                                    "dim_gray", "walnut_brown", "rose_taupe"),
   `madder_chocolate` = egoitz_cols("madder", "murrey", "byzantium",

@@ -6,6 +6,11 @@
 \usage{
 tabla_contingencia(var1, var2)
 }
+\arguments{
+\item{var1}{Variable que se quiera introducir para formar una tabla de contingencia}
+
+\item{var2}{Variable que se quiera introducir para formar una tabla de contingencia}
+}
 \description{
 Tabla de Contingencia
 }
