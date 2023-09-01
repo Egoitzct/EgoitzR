@@ -96,11 +96,11 @@ mosaico_tabla_contingencia <- function(tabla, title = " ") {
   layout(matrix(c(1), ncol = 1, nrow = 1))
   tabla_2 <- prop.table(tabla, margin = 2)
 
-  mosaicplot(tabla_2, cex = 1.1, color = egoitz_cols("yinmn_blue"))
-  title(main = " ")
+  mosaicplot(tabla_2, cex = 1.1, color = egoitz_cols("yinmn_blue"),
+             main = title)
 }
 
-barras_tabla_contingencia <- function(tabla) {
+barras_tabla_contingencia <- function(tabla, title = " ") {
 
   color_num <- length(unique(rownames(tabla)))
 
@@ -112,11 +112,12 @@ barras_tabla_contingencia <- function(tabla) {
          heights = c(2, 1),
          widths = c(2, 2))
 
-  par(mar = c(0, 4, 2, 1))
-  barplot(tabla, col = colors, beside = TRUE)
+  par(mar = c(0, 4, 3, 1))
+  barplot(tabla, col = colors, beside = TRUE, main = title)
 
-  par(mar = c(0, 2, 2, 2))
-  barplot(tabla_2, col = colors, beside = TRUE)
+  par(mar = c(0, 2, 3, 2))
+  barplot(tabla_2, col = colors, beside = TRUE,
+          main = paste(title, "(Proporción sobre 100)", sep = "\n"))
 
   plot.new()
   legend("center", rownames(tabla),fill = colors, border = "black")
