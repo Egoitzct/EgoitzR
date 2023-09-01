@@ -27,7 +27,7 @@ coef_conting <- function(tabla) {
 }
 
 chi_cuadrado <- function(tabla, phi_coef = FALSE, coef_conting = TRUE,
-                         cramer_v = TRUE) {
+                         cramer_v = TRUE, likelihood_ratio = TRUE) {
   suppressWarnings({
 
   chi <- chisq.test(tabla)
@@ -50,8 +50,17 @@ chi_cuadrado <- function(tabla, phi_coef = FALSE, coef_conting = TRUE,
     contingencia <- "FALSE"
   }
 
+  if (likelihood_ratio) {
+    observed <- as.numeric(as.vector(chi[["observed"]]))
+    expected <- as.numeric(as.vector(chi[["expected"]]))
+    likelihood_ratio <- 2 * (sum(observed * (log(observed / expected))))
+  } else {
+    likelihood_ratio <- "FALSE"
+  }
+
   resultados <- data.frame(stringsAsFactors = FALSE,
                            Chi_Cuadrado = c(chi[["statistic"]][["X-squared"]]),
+                           Likelihood_Ratio = c(likelihood_ratio),
                            P = c(chi$p.value),
                            GL = c(chi[["parameter"]][["df"]]),
                            Phi = c(phi),
